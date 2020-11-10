@@ -2,6 +2,23 @@ prod_build = ARGV[0] = "production_build"
 
 # Read files
 
+def page_partials(new_page_partial)
+  pages = "site/#{page_partial}.html"
+  new_page_partial = File.open(pages).read
+end
+
+def script_partials(new_script_partial)
+  scripts = "site/#{script_partial}.js"
+  new_script_partial = File.open(scripts).read
+end
+
+def style_partial(new_style_partial)
+  styles = "site/#{style_partial}.css"
+  new_style_partial(styles).read
+end
+
+puts page_partials()
+
 head_html   = File.open("site/_head.html").read
 seo_html    = File.open("site/_seo.html").read
 main_css    = File.open("site/_main.css").read
@@ -9,6 +26,7 @@ body_html   = File.open("site/_body.html").read
 scaffold_js = File.open("site/_scaffold.js").read
 scripts_js  = File.open("site/_scripts.js").read
 base_html   = File.open("site/base.html").read
+posts_html   = File.open("site/posts.html").read
 dev_html    = ""
 
 
@@ -26,6 +44,7 @@ build_string = base_html
   .gsub("{{ scaffold }}", scaffold_js)
   .gsub("{{ scripts }}", scripts_js)
   .gsub("{{ base }}", base_html)
+  .gsub("{{ posts }}", posts_html)
   .gsub("{{ dev }}", dev_html)
 
   # Write to index page
