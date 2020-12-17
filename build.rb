@@ -1,63 +1,40 @@
 prod_build = ARGV[0] = "production_build"
 
-# Capture input
-# require 'fileutils'
-print "Enter page name: "
-page = gets
 
-print "Enter script name: "
-script = gets
-
-print "Enter style name: "
-style = gets
-
-# Read files
-
-def page_partial(page)
-  pages = "#{page}.html"
-  page = File.open(pages, "w").read
-end
-
-def script_partial(script)
-  scripts = "#{script}.js"
-  script = File.open(scripts, "w").read
-end
-
-def style_partial(style)
-  styles = "#{style}.css"
-  style = File.open(styles, "w").read
-end
+head_file = "head.html"
+@write_head = File.open(head_file, "w")
+@write_head.puts "!DOCTYPE"
 
 
-style_partial.puts ""
-# puts page_partial(page)
-# puts script_partial(script)
-# puts style_partial(style)
-
-# FileUtils.mv %w(), 'site/'
-head_html   = File.open("site/_head.html").read
-seo_html    = File.open("site/_seo.html").read
-main_css    = File.open("site/_main.css").read
-body_html   = File.open("site/_body.html").read
-scaffold_js = File.open("site/_scaffold.js").read
-scripts_js  = File.open("site/_scripts.js").read
-base_html   = File.open("site/base.html").read
-posts_html   = File.open("site/posts.html").read
-dev_html    = ""
+seo_file = "seo.html"
+@write_seo = File.open(seo_file, "w")
+@write_seo.puts "!DOCTYPE"
 
 
-unless prod_build
-  dev_html = File.open("site/dev_html").read
-end
+main_file = "main.css"
+@css = File.open(main_file, "w")
+@css.puts "body {display: flex;}"
+
+
+scripts_file = "scripts.js"
+@js = File.open(scripts_file, "w")
+@js.puts "'use strict"
+
+
+baseFile = "base.html"
+@base = File.open(baseFile, "w")
+@base.puts "!DOCTYPE"
+dev_html  = ""
+
 
 # Create page partial
 # i.e. creating the build.html file and using .gsub to add
 # all the handlebars template html to the page
 # In this case head, seo, main, and dev, etc
-build_string = base_html
-  .gsub("{{ head }}", "#{page_partial}")
-  .gsub("{{ seo }}", seo_html)
-  .gsub("{{ main }}", main_css)
+build_string = baseFile
+  .gsub("{{ head }}", head_file)
+  .gsub("{{ seo }}", seo_file)
+  .gsub("{{ main }}", main_file)
   .gsub("{{ dev }}", dev_html)
 
   # Write to index page
@@ -68,4 +45,10 @@ if prod_build
 else
   puts "Building dev index... dev.index.html"
   File.write("dev.index.html", build_string)
+end
+
+
+
+unless prod_build
+  dev_html = File.open("site/dev_html").read
 end
