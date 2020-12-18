@@ -1,1 +1,4 @@
 theme: jekyll-theme-cayman
+
+title: Static Gen Docs
+description: Docs for Static Gen, a static site generator built with Ruby

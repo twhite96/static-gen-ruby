@@ -1,37 +1,12 @@
-## Welcome to GitHub Pages
+# Usage
 
-You can use the [editor on GitHub](https://github.com/twhite96/static-gen-ruby/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+1. Clone the repo at `https://github.com/twhite96/static-gen-ruby.git` or with GitHub CLI `gh repo clone twhite96/static-gen-ruby`
+2. Run: `bundle` to install dependencies.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# To build the site
 
-### Markdown
+run `ruby build.rb`
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This will generate files in the root directory.
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/twhite96/static-gen-ruby/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Currently, there is a `site` directory that I plan on moving the files to. You can look inside the directory and see the files the script generates.
