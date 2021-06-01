@@ -1,4 +1,8 @@
 prod_build = ARGV[0] = "production_build"
+require 'ruby-handlebars'
+
+hbs = Handlebars::Handlebars.new
+hbs.compile("Hello {{name}}").call({name: 'world'})
 
 
 head_file = "head.html"
@@ -18,7 +22,7 @@ main_file = "main.css"
 
 scripts_file = "scripts.js"
 @js = File.open(scripts_file, "w")
-@js.puts "'use strict"
+@js.puts "'use strict'"
 
 
 baseFile = "base.html"
@@ -32,6 +36,10 @@ dev_html  = ""
 # i.e. creating the build.html file and using .gsub to add
 # all the handlebars template html to the page
 # In this case head, seo, main, and dev, etc
+
+# Test if the build string is rendering Handlebars template to 'base.html'
+# using RSpec
+
 build_string = baseFile
   .gsub("{{ head }}", head_file)
   .gsub("{{ seo }}", seo_file)
