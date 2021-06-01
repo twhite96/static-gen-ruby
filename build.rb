@@ -38,7 +38,7 @@ dev_html  = ""
 # In this case head, seo, main, and dev, etc
 
 # Test if the build string is rendering Handlebars template to 'base.html'
-# using RSpec
+# using RSpec and Cucumber/aruba
 
 build_string = baseFile
   .gsub("{{ head }}", head_file)
