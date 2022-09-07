@@ -59,7 +59,7 @@ GEM
     mime-types-data (3.2021.0225)
     minitest (5.14.4)
     multi_test (0.1.2)
-    parslet (1.8.2)
+    mustache (1.1.1)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -78,8 +78,6 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
-    ruby-handlebars (0.4.0)
-      parslet (~> 1.6, >= 1.6.2)
     sys-uname (1.2.2)
       ffi (~> 1.1)
     thor (1.1.0)
@@ -93,8 +91,8 @@ PLATFORMS
 
 DEPENDENCIES
   aruba
+  mustache (~> 1.0)
   rspec
-  ruby-handlebars
 
 BUNDLED WITH
    2.1.4

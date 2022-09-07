@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'ruby-handlebars'
+gem "mustache", "~> 1.0"
 gem 'aruba'
 gem 'rspec'

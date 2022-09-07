@@ -1,8 +1,8 @@
 prod_build = ARGV[0] = "production_build"
-require 'ruby-handlebars'
-
-hbs = Handlebars::Handlebars.new
-hbs.compile("Hello {{name}}").call({name: 'world'})
+# require 'ruby-handlebars'
+#
+# hbs = Handlebars::Handlebars.new
+# hbs.compile("Hello {{name}}").call({name: 'world'})
 
 
 head_file = "head.html"
