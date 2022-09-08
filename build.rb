@@ -1,4 +1,6 @@
 prod_build = ARGV[0] = "production_build"
+require 'utils/generate_html.rb'
+require 'fileutils'
 # require 'ruby-handlebars'
 #
 # hbs = Handlebars::Handlebars.new
@@ -25,8 +27,8 @@ scripts_file = "scripts.js"
 @js.puts "'use strict'"
 
 
-baseFile = "base.html"
-@base = File.open(baseFile, "w")
+base_file = "base.html"
+@base = File.open(base_file, "w")
 @base.puts "!DOCTYPE"
 dev_html  = ""
 
@@ -40,7 +42,7 @@ dev_html  = ""
 # Test if the build string is rendering Handlebars template to 'base.html'
 # using RSpec and Cucumber/aruba
 
-build_string = baseFile
+build_string = base_file
   .gsub("{{ head }}", head_file)
   .gsub("{{ seo }}", seo_file)
   .gsub("{{ main }}", main_file)
@@ -50,7 +52,9 @@ build_string = baseFile
 
 if prod_build
   puts "Building index.html..."
+  FileUtils.mkdir '_site'
   File.write("index.html", build_string)
+  FileUtils.mv %w(index.html head.html seo.html main.html scripts.js main.css), '_site'
 else
   puts "Building dev index... dev.index.html"
   File.write("dev.index.html", build_string)
@@ -59,5 +63,5 @@ end
 
 
 unless prod_build
-  dev_html = File.open("site/dev_html").read
+  File.open("site/dev_html").read
 end
