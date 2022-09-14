@@ -13,7 +13,7 @@ class Generate < Mustache
   end
 
   def title
-    10_000
+
   end
 
   def description
@@ -27,11 +27,11 @@ class Generate < Mustache
   end
 
   def scripts
-    true
+
   end
 
   def styles
-    true
+
   end
 
   def favicon
