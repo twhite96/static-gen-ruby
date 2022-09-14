@@ -39,28 +39,29 @@ display: flex;}
   end
 end
 
-Generate.head
-
-
-seo_file = "seo.html"
-@write_seo = File.open(seo_file, "w")
-@write_seo.puts "!DOCTYPE"
+index_file = "index.html"
+@write_head = File.open(index_file, "w")
+index_file puts = Generate.head
+File.close
 
 
 main_file = "main.css"
 @css = File.open(main_file, "w")
-@css.puts "body {display: flex;}"
+main.css puts = Generate.styles
+File.close
 
 
 scripts_file = "scripts.js"
 @js = File.open(scripts_file, "w")
-@js.puts "'use strict'"
+scripts puts = Generate.scripts
+File.close
 
 
 base_file = "base.html"
 @base = File.open(base_file, "w")
 @base.puts "!DOCTYPE"
 dev_html  = ""
+File.close
 
 
 
@@ -72,9 +73,10 @@ dev_html  = ""
 # Test if the build string is rendering Handlebars template to 'base.html'
 # using RSpec and Cucumber/aruba
 
+
+# Do I even need this build string?
 build_string = base_file
-  .gsub("{{ head }}", head_file)
-  .gsub("{{ seo }}", seo_file)
+  .gsub("{{ head }}", index_file)
   .gsub("{{ main }}", main_file)
   .gsub("{{ dev }}", dev_html)
 
