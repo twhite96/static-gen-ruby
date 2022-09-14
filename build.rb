@@ -1,5 +1,4 @@
 prod_build = ARGV[0] = "production_build"
-require 'utils/generate_html.rb'
 require 'fileutils'
 require 'mustache'
 
@@ -82,6 +81,14 @@ build_string = base_file
 
   # Write to index page
 
+# Probably want to do some checks here;
+# is the file there
+# is it open
+# is the dir there
+# is it empty, etc
+# then you could decide what to do after
+# probably need another if/else here for those kinds of checks
+# 
 if prod_build
   puts "Building index.html..."
   FileUtils.mkdir '_site'
