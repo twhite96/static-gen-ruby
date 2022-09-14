@@ -1,15 +1,45 @@
 prod_build = ARGV[0] = "production_build"
 require 'utils/generate_html.rb'
 require 'fileutils'
-# require 'ruby-handlebars'
-#
-# hbs = Handlebars::Handlebars.new
-# hbs.compile("Hello {{name}}").call({name: 'world'})
+require 'mustache'
 
+# Using mustache to generate the HTML.
+# Now trying to reason about how to insert
+# the generated HTML into the generated files
+# From the build.rb file
 
-head_file = "head.html"
-@write_head = File.open(head_file, "w")
-@write_head.puts "!DOCTYPE"
+class Generate < Mustache
+  def head
+    puts %Q(<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>)
+  end
+
+  def scripts
+    puts '"use strict"'
+  end
+
+  def styles
+    puts %Q(
+* {
+  box-sizing: border-box;
+}
+body {
+display: flex;}
+)
+  end
+end
+
+Generate.head
 
 
 seo_file = "seo.html"
@@ -55,6 +85,8 @@ if prod_build
   FileUtils.mkdir '_site'
   File.write("index.html", build_string)
   FileUtils.mv %w(index.html head.html seo.html main.html scripts.js main.css), '_site'
+  File.close
+
 else
   puts "Building dev index... dev.index.html"
   File.write("dev.index.html", build_string)
