@@ -7,7 +7,7 @@ require 'mustache'
 # the generated HTML into the generated files
 # From the build.rb file
 
-class Generate < Mustache
+class Index < Mustache
   def head
     puts %Q(<!DOCTYPE html>
 <html lang="en">
@@ -22,11 +22,15 @@ class Generate < Mustache
 </body>
 </html>)
   end
+end
 
+class Script < Mustache
   def scripts
     puts '"use strict"'
   end
+end
 
+class Style < Mustache
   def styles
     puts %Q(
 * {
@@ -38,29 +42,15 @@ display: flex;}
   end
 end
 
-index_file = "index.html"
-@write_head = File.open(index_file, "w")
-index_file puts = Generate.head
-File.close
-
-
-main_file = "main.css"
-@css = File.open(main_file, "w")
-main.css puts = Generate.styles
-File.close
-
-
-scripts_file = "scripts.js"
-@js = File.open(scripts_file, "w")
-scripts puts = Generate.scripts
-File.close
-
-
 base_file = "base.html"
 @base = File.open(base_file, "w")
 @base.puts "!DOCTYPE"
 dev_html  = ""
-File.close
+@base.close
+
+build_string = base_file
+  .gsub("{{ dev }}", dev_html)
+
 
 
 
@@ -69,17 +59,16 @@ File.close
 # all the handlebars template html to the page
 # In this case head, seo, main, and dev, etc
 
+  # Write to index page
+
+
+# Create page partial
+# i.e. creating the build.html file and using .gsub to add
+# all the handlebars template html to the page
+# In this case head, seo, main, and dev, etc
 # Test if the build string is rendering Handlebars template to 'base.html'
 # using RSpec and Cucumber/aruba
 
-
-# Do I even need this build string?
-build_string = base_file
-  .gsub("{{ head }}", index_file)
-  .gsub("{{ main }}", main_file)
-  .gsub("{{ dev }}", dev_html)
-
-  # Write to index page
 
 # Probably want to do some checks here;
 # is the file there
@@ -88,21 +77,51 @@ build_string = base_file
 # is it empty, etc
 # then you could decide what to do after
 # probably need another if/else here for those kinds of checks
-# 
+#
 if prod_build
   puts "Building index.html..."
   FileUtils.mkdir '_site'
-  File.write("index.html", build_string)
-  FileUtils.mv %w(index.html head.html seo.html main.html scripts.js main.css), '_site'
-  File.close
 
+  def build_index
+    puts "beep boop generating index file"
+    Index.template_file = 'index'
+    Index.template_extension = 'html'
+    Index.generate
+    file.close
+  end
+
+  def build_script
+    puts "I know ruby devs hate js but we'll build you a script anyway 😜"
+    Script.template_file = 'scripts'
+    Script.template_extension = 'js'
+    Script.generate
+    File.close
+  end
+
+  def build_styles
+    puts "you like css? Here is a css file"
+    Style.template_file = 'styles'
+    Style.template_extension = 'css'
+    Style.generate
+    file.close
+  end
+
+  def move_files
+    puts "moving your files"
+    path = File.expand_path('../', __FILE__)
+    Dir.glob("*").each do |file|
+      new_path = "#{path}/#{file.split('/')[-1]}"
+      FileUtils.mv(file, new_path)
+    end
+  end
 else
   puts "Building dev index... dev.index.html"
-  File.write("dev.index.html", build_string)
+  file.write("dev.index.html", build_string)
 end
 
 
 
 unless prod_build
   File.open("site/dev_html").read
+  File.close
 end
