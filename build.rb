@@ -1,4 +1,6 @@
-prod_build = ARGV[0] = "production_build"
+# frozen_string_literal: true
+
+prod_build = ARGV[0] = 'production_build'
 require 'fileutils'
 require 'mustache'
 
@@ -9,7 +11,7 @@ require 'mustache'
 
 class Index < Mustache
   def head
-    puts %Q(<!DOCTYPE html>
+    puts '<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -20,7 +22,7 @@ class Index < Mustache
 <body>
 
 </body>
-</html>)
+</html>'
   end
 end
 
@@ -32,35 +34,33 @@ end
 
 class Style < Mustache
   def styles
-    puts %Q(
+    puts '
 * {
   box-sizing: border-box;
 }
 body {
 display: flex;}
-)
+'
   end
 end
 
-base_file = "base.html"
-@base = File.open(base_file, "w")
-@base.puts "!DOCTYPE"
-dev_html  = ""
-@base.close
-
-build_string = base_file
-  .gsub("{{ dev }}", dev_html)
-
-
-
+# base_file = 'base.html'
+# @base = File.open(base_file, 'w')
+# @base.puts '!DOCTYPE'
+# dev_html  = ''
+# @base.close
+#
+# build_string = base_file
+#   .gsub('{{ dev }}', dev_html)
+#
+#
 
 # Create page partial
 # i.e. creating the build.html file and using .gsub to add
 # all the handlebars template html to the page
 # In this case head, seo, main, and dev, etc
 
-  # Write to index page
-
+# Write to index page
 
 # Create page partial
 # i.e. creating the build.html file and using .gsub to add
@@ -68,7 +68,6 @@ build_string = base_file
 # In this case head, seo, main, and dev, etc
 # Test if the build string is rendering Handlebars template to 'base.html'
 # using RSpec and Cucumber/aruba
-
 
 # Probably want to do some checks here;
 # is the file there
@@ -78,50 +77,48 @@ build_string = base_file
 # then you could decide what to do after
 # probably need another if/else here for those kinds of checks
 #
-if prod_build
-  puts "Building index.html..."
-  FileUtils.mkdir '_site'
-
-  def build_index
-    puts "beep boop generating index file"
-    Index.template_file = 'index'
-    Index.template_extension = 'html'
-    Index.generate
-    file.close
-  end
-
-  def build_script
-    puts "I know ruby devs hate js but we'll build you a script anyway 😜"
-    Script.template_file = 'scripts'
-    Script.template_extension = 'js'
-    Script.generate
-    File.close
-  end
-
-  def build_styles
-    puts "you like css? Here is a css file"
-    Style.template_file = 'styles'
-    Style.template_extension = 'css'
-    Style.generate
-    file.close
-  end
-
-  def move_files
-    puts "moving your files"
-    path = File.expand_path('../', __FILE__)
-    Dir.glob("*").each do |file|
-      new_path = "#{path}/#{file.split('/')[-1]}"
-      FileUtils.mv(file, new_path)
-    end
-  end
-else
-  puts "Building dev index... dev.index.html"
-  file.write("dev.index.html", build_string)
+# if !prod_build
+#
+#   puts 'Building dev index... dev.index.html'
+#   file.write('dev.index.html', build_string)
+# else
+def build_index
+  puts 'beep boop generating index file'
+  Index.template_file = 'index'
+  Index.template_extension = 'html'
+  Index.generate
+  file.close
+  yield
 end
 
+def build_script
+  puts 'I know ruby devs hate js but we\'ll build you a script anyway 😜'
+  Script.template_file = 'scripts'
+  Script.template_extension = 'js'
+  Script.generate
+  File.close
+  yield
+end
 
+def build_styles
+  puts 'you like css? Here is a css file'
+  Style.template_file = 'styles'
+  Style.template_extension = 'css'
+  Style.generate
+  file.close
+  yield
+end
+
+def move_files
+  puts 'moving your files'
+  puts build_index
+  puts build_script
+  puts build_styles
+  file.mkdir '_site'
+  FileUtils.mv Dir.glob('*'), '_site', noop: true, verbose: true
+end
 
 unless prod_build
-  File.open("site/dev_html").read
+  File.open('site/dev_html').read
   File.close
 end

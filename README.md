@@ -2,6 +2,10 @@
 
 > A static site generator built with Ruby.
 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/twhite96/static-gen-ruby?color=%23ec7fff&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/twhite96/static-gen-ruby?color=%2317e9bf&style=for-the-badge)
+![Maintenance](https://img.shields.io/maintenance/yes/2022?color=%23f08080&style=for-the-badge)
+
 How to use:
 
 1. 🌀 Clone the repo at `https://github.com/twhite96/static-gen-ruby.git` or with GitHub CLI `gh repo clone twhite96/static-gen-ruby`
