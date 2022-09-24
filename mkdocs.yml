@@ -37,8 +37,8 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
 repo_url: https://github.com/twhite96/static-gen-ruby
-repo_name: twhite96/SuburbanSmarts
-site_name: Static Gen
+repo_name: twhite96/static-gen-ruby
+site_name: Ruby Gen
 site_author: Tiffany White
 site_description: Documentation for a static site generator I built using Ruby.
 markdown_extensions:
