@@ -8,7 +8,9 @@ require 'mustache'
 # Now trying to reason about how to insert
 # the generated HTML into the generated files
 # From the build.rb file
+# rubocop:disable Metrics/MethodLength
 
+# :nodoc:
 class Index < Mustache
   def head
     puts '<!DOCTYPE html>
@@ -26,12 +28,14 @@ class Index < Mustache
   end
 end
 
+# :nodoc:
 class Script < Mustache
   def scripts
     puts '"use strict"'
   end
 end
 
+# :nodoc:
 class Style < Mustache
   def styles
     puts '

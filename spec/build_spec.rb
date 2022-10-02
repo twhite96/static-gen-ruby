@@ -1,12 +1,10 @@
-require 'rspec'
+# frozen_string_literal: true
+require 'rspec/core'
 
-describe 'Build' do
-  before do
-    # Do nothing
-  end
-
-  after do
-    # Do nothing
+RSpec.describe 'Index' do
+  it 'generates head and metadata tags in index file'
+  index do
+    expect(described_class.new).to be_
   end
 
   context 'when condition' do

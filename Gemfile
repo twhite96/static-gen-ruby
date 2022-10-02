@@ -1,6 +1,8 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-gem "mustache", "~> 1.0"
+gem 'rspec', require: true
+
+source 'https://rubygems.org'
 gem 'aruba'
-gem 'rspec'
+gem 'mustache', '~> 1.0'
 gem 'rubocop', group: 'development'
