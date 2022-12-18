@@ -11,42 +11,25 @@ require 'mustache'
 # rubocop:disable Metrics/MethodLength
 
 # :nodoc:
-class Index < Mustache
-  def head
-    puts '<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+class Site < Mustache
 
-</body>
-</html>'
+  def title
+    self.template_path = '_site'
+    self.template_file = 'index'
+    self.template_extension = 'html'
+    Simple.new.template = '{{head}}!'
+  end
+
+  def nav
+
+  end
+
+  def header
+
   end
 end
 
-# :nodoc:
-class Script < Mustache
-  def scripts
-    puts '"use strict"'
-  end
-end
 
-# :nodoc:
-class Style < Mustache
-  def styles
-    puts '
-* {
-  box-sizing: border-box;
-}
-body {
-display: flex;}
-'
-  end
-end
 
 # base_file = 'base.html'
 # @base = File.open(base_file, 'w')
@@ -86,41 +69,7 @@ end
 #   puts 'Building dev index... dev.index.html'
 #   file.write('dev.index.html', build_string)
 # else
-def build_index
-  puts 'beep boop generating index file'
-  Index.template_file = 'index'
-  Index.template_extension = 'html'
-  Index.generate
-  file.close
-  yield
-end
 
-def build_script
-  puts 'I know ruby devs hate js but we\'ll build you a script anyway 😜'
-  Script.template_file = 'scripts'
-  Script.template_extension = 'js'
-  Script.generate
-  File.close
-  yield
-end
-
-def build_styles
-  puts 'you like css? Here is a css file'
-  Style.template_file = 'styles'
-  Style.template_extension = 'css'
-  Style.generate
-  file.close
-  yield
-end
-
-def move_files
-  puts 'moving your files'
-  puts build_index
-  puts build_script
-  puts build_styles
-  file.mkdir '_site'
-  FileUtils.mv Dir.glob('*'), '_site', noop: true, verbose: true
-end
 
 unless prod_build
   File.open('site/dev_html').read
