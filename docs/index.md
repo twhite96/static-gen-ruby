@@ -38,3 +38,11 @@ Not much. I wanted it to be a full on blog generator but will need to sit on tha
 Maybe DRYing it up a bit, but I like what I have, especially for a v1.
 ### 📘 Further reading
 You can read it here: [Building a Static Site Generator with Ruby](https://tiffanywhite.dev/2020/12/17/building-a-static-site-generator-with-ruby/).
+
+**UPDATE**:
+
+Further progress on the project on my blog.
+
+[Update on my static site generator](https://www.tiffanywhite.dev/2022/09/26/update-on-my-static-site-generator/)
+
+[Mustache Fix for my static site generator](https://www.tiffanywhite.dev/shorts/mustache-fix-for-my-static-site-generator/)
