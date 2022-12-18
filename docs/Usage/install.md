@@ -1,7 +1,7 @@
 # Installing the project
 
 !!!danger "BEWARE!"
-    These docs are in the very early stages of being worked on. Nothing is finished int he project yet, but I wanted to get my thoughts out about it here in the docs for me to reference later.
+    These docs are in the very early stages of being worked on. Nothing is finished in the project yet, but I wanted to get my thoughts out about it here in the docs for me to reference later.
 
 
 - Clone the repo from GitHub using: `git clone https://github.com/twhite96/static-gen-ruby`
