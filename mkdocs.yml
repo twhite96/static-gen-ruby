@@ -36,6 +36,8 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+extra_css:
+  - stylesheets/extra.css
 repo_url: https://github.com/twhite96/static-gen-ruby
 repo_name: twhite96/static-gen-ruby
 site_name: Ruby Gen
