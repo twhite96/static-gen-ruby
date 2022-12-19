@@ -51,7 +51,7 @@ You can read it here: [Building a Static Site Generator with Ruby](https://tiffa
 - [ ] Decide if more classes and templates are necessary
 
 
-**UPDATE**:
+## ⚡ UPDATE ⚡:
 
 Further progress on the project on my blog.
 
