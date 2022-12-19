@@ -39,6 +39,17 @@ Maybe DRYing it up a bit, but I like what I have, especially for a v1.
 ### 📘 Further reading
 You can read it here: [Building a Static Site Generator with Ruby](https://tiffanywhite.dev/2020/12/17/building-a-static-site-generator-with-ruby/).
 
+
+### ✅ TODOs
+- [ ] Finish reading Mustache docs
+- [ ] Figure out if you want to publish a gem
+- [ ] Figure out if you want to let the user create posts as YAML using this example: [mustache/projects.mustache at 9fefaabd2b1e68ef8186a210af1f0e18ef48bb55 · mustache/mustache · GitHub](https://github.com/mustache/mustache/blob/9fefaabd2b1e68ef8186a210af1f0e18ef48bb55/examples/projects.mustache) and [mustache/projects.yml at 9fefaabd2b1e68ef8186a210af1f0e18ef48bb55 · mustache/mustache · GitHub](https://github.com/mustache/mustache/blob/9fefaabd2b1e68ef8186a210af1f0e18ef48bb55/examples/projects.yml)
+- [ ] Learn more about publishing gems
+- [ ] Learn more about bundler
+- [ ] Write tests and mocks to see if the class renders the Mustache html template
+- [ ] Decide if more classes and templates are necessary
+
+
 **UPDATE**:
 
 Further progress on the project on my blog.
