@@ -42,6 +42,7 @@ repo_url: https://github.com/twhite96/static-gen-ruby
 repo_name: twhite96/static-gen-ruby
 site_name: Ruby Gen
 site_author: Tiffany White
+site_url: https://rubygen.tiff.run
 site_description: Documentation for a static site generator I built using Ruby.
 markdown_extensions:
   - def_list
