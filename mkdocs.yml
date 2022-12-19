@@ -44,6 +44,9 @@ site_name: Ruby Gen
 site_author: Tiffany White
 site_description: Documentation for a static site generator I built using Ruby.
 markdown_extensions:
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - admonition
   - pymdownx.highlight:
       use_pygments: true
